@@ -1,12 +1,17 @@
 Package: ipedals
 Type: Package
-Title: What the Package Does (Title Case)
+Title: ipedals
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Justin Myers
+Maintainer: Justin Myers <justin@justinmyers.net>
+Description: Simplifies interactions with data from the Integrated
+    Postsecondary Education Data System, the U.S. Department of Education's
+    annual data collection from colleges and universities that receive federal
+    financial aid
+License: MIT
 Encoding: UTF-8
 LazyData: true
-Suggests: testthat
+Imports:
+    httr
+Suggests:
+    testthat
