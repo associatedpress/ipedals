@@ -12,6 +12,12 @@ License: MIT
 Encoding: UTF-8
 LazyData: true
 Imports:
-    httr
+    httr,
+    stringr,
+    dplyr,
+    magrittr,
+    tibble,
+    readr
 Suggests:
     testthat
+RoxygenNote: 6.0.1
