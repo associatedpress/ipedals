@@ -10,7 +10,7 @@ ipeds_table(table_id)
 \item{table_id}{A table ID.}
 }
 \value{
-A tibble of data.
+A list containing two tibbles: $table and $codebook.
 }
 \description{
 Load the data CSV from an IPEDS zip file.
