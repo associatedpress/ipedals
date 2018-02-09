@@ -1,8 +1,8 @@
-#' Load the data CSV from an IPEDS zip file.
+#' Load a table's data and important metadata directly from the IPEDS website.
 #'
 #' @export
 #' @param table_id A table ID.
-#' @return A list containing two tibbles: $table and $codebook.
+#' @return A list containing three tibbles: $table, $variables and $codebook.
 ipeds_table = function(table_id) {
   print(stringr::str_c("Downloading metadata for ", table_id))
   meta_path = download_metadata(table_id)
@@ -16,5 +16,5 @@ ipeds_table = function(table_id) {
   table_data = extract_csv(data_path, column_types)
   with_labels = add_labels(table_data, varlist)
 
-  list(table=with_labels, codebook=codebook)
+  list(table=with_labels, variables=varlist, codebook=codebook)
 }

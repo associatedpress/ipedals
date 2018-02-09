@@ -2,7 +2,7 @@
 % Please edit documentation in R/ipeds_table.R
 \name{ipeds_table}
 \alias{ipeds_table}
-\title{Load the data CSV from an IPEDS zip file.}
+\title{Load a table's data and important metadata directly from the IPEDS website.}
 \usage{
 ipeds_table(table_id)
 }
@@ -10,8 +10,8 @@ ipeds_table(table_id)
 \item{table_id}{A table ID.}
 }
 \value{
-A list containing two tibbles: $table and $codebook.
+A list containing three tibbles: $table, $variables and $codebook.
 }
 \description{
-Load the data CSV from an IPEDS zip file.
+Load a table's data and important metadata directly from the IPEDS website.
 }
