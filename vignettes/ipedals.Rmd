@@ -1,5 +1,5 @@
 ---
-title: "ipedals, a data library about higher education"
+title: "ipedals, a data package about higher education"
 author: "Justin Myers"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -14,52 +14,50 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+library(tidyverse)
 ```
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+ipedals is designed to simplify access to [IPEDS][], the Integrated
+Postsecondary Education Data System from the U.S. Department of Education's
+[National Center for Education Statistics][NCES].
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+[IPEDS]: https://nces.ed.gov/ipeds/
+[NCES]: https://nces.ed.gov/
 
-## Vignette Info
+IPEDS consists of a collection of surveys completed by most colleges and
+universities in the United States.
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+## Table names
 
-## Styles
+The ipedals package centers around individual tables of survey data, since
+that's how IPEDS itself is organized.
 
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
+These are named with the combination of an academic year and one or more
+abbreviations; for example, `ADM2016` contains information about admissions for
+fall 2016.
 
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
+This package eventually will include a way to look up these IDs from within R,
+but for now, visit <https://nces.ed.gov/ipeds/datacenter/DataFiles.aspx>.
 
-## Figures
+## Usage
 
-The figure sizes have been customised so that you can easily put two images side-by-side. 
+Pass a table ID to `ipedals::ipeds_table`, and get back a list with several
+useful properties:
 
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+```{r, warning = FALSE, message = FALSE, results = "hide"}
+hd2016 <- ipedals::ipeds_table("HD2016")
+```
+```{r}
+hd2016$table
+```
+```{r}
+hd2016$variables %>% select(varname, varTitle)
+```
+```{r}
+hd2016$codebook
 ```
 
-You can enable figure captions by `fig_caption: yes` in YAML:
+## TODO
 
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
-
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
-```
-
-Also a quote using `>`:
-
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+*   Explain IPEDS in more detail so people know what they're getting
+*   Add table ID lookup
