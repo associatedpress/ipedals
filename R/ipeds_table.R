@@ -14,7 +14,6 @@ ipeds_table = function(table_id) {
   print(stringr::str_c("Downloading data for ", table_id))
   data_path = download_data(table_id)
   table_data = extract_csv(data_path, column_types)
-  with_labels = add_labels(table_data, varlist)
 
-  list(table=with_labels, variables=varlist, codebook=codebook)
+  list(table=table_data, variables=varlist, codebook=codebook)
 }
