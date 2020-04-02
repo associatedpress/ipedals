@@ -2,17 +2,20 @@
 #'
 #' @export
 #' @param table_id A table ID.
+#' @param local_dir An optional path to a directory where data files should be
+#'   saved. If omitted, will use a temporary directory.
 #' @return A list containing three tibbles: $table, $variables and $codebook.
-ipeds_table <- function(table_id) {
-  print(stringr::str_c("Downloading metadata for ", table_id))
-  meta_path <- download_metadata(table_id)
+ipeds_table <- function(table_id, local_dir) {
+  if (missing(local_dir)) {
+    local_dir <- tempdir()
+  }
+  meta_path <- download_metadata(table_id, local_dir)
   varlist <- extract_varlist(meta_path)
   codebook <- extract_codebook(meta_path)
 
   column_types <- get_column_types(varlist)
 
-  print(stringr::str_c("Downloading data for ", table_id))
-  data_path <- download_data(table_id)
+  data_path <- download_data(table_id, local_dir)
   table_data <- extract_csv(data_path, column_types)
 
   list(table = table_data, variables = varlist, codebook = codebook)

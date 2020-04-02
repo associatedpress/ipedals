@@ -4,10 +4,13 @@
 \alias{ipeds_table}
 \title{Load a table's data and important metadata directly from the IPEDS website.}
 \usage{
-ipeds_table(table_id)
+ipeds_table(table_id, local_dir)
 }
 \arguments{
 \item{table_id}{A table ID.}
+
+\item{local_dir}{An optional path to a directory where data files should be
+saved. If omitted, will use a temporary directory.}
 }
 \value{
 A list containing three tibbles: $table, $variables and $codebook.

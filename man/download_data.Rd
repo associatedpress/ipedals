@@ -4,10 +4,13 @@
 \alias{download_data}
 \title{Download the data file for a given IPEDS table.}
 \usage{
-download_data(table_id)
+download_data(table_id, local_dir)
 }
 \arguments{
 \item{table_id}{A table ID.}
+
+\item{local_dir}{A path to a directory where the raw data file should be
+saved.}
 }
 \value{
 The path to the downloaded zip file of that table's data.
