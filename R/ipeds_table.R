@@ -15,5 +15,5 @@ ipeds_table <- function(table_id) {
   data_path <- download_data(table_id)
   table_data <- extract_csv(data_path, column_types)
 
-  list(table=table_data, variables=varlist, codebook=codebook)
+  list(table = table_data, variables = varlist, codebook = codebook)
 }
