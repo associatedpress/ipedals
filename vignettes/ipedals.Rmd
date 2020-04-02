@@ -58,6 +58,10 @@ hd2016$variables %>% select(varname, varTitle)
 hd2016$codebook
 ```
 
+`ipeds_table` also accepts an optional second argument, which is a path to a
+directory where the raw files of data and metadata should be saved. If a given
+file already exists, it won't be downloaded again.
+
 ## TODO
 
 *   Explain IPEDS in more detail so people know what they're getting
