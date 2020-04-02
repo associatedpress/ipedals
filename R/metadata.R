@@ -1,5 +1,6 @@
 #' Build a full column specification from an IPEDS varlist.
 #'
+#' @export
 #' @param varlist A tibble of an IPEDS metadata file's `varlist` sheet.
 #' @return A column specification as returned by `readr::cols`.
 get_column_types <- function(varlist) {
