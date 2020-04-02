@@ -9,7 +9,11 @@ get_column_types <- function(varlist) {
     row <- varlist[i,]
     var_name <- row$varname
     data_type <- row$DataType
-    if (data_type == "A") {
+    if (var_name == "UNITID") {
+      specs[[var_name]] <- readr::col_character()
+    } else if (data_type == "N") {
+      specs[[var_name]] <- readr::col_number()
+    } else {
       specs[[var_name]] <- readr::col_character()
     }
   }
