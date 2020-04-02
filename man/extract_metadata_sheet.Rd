@@ -8,6 +8,9 @@ extract_metadata_sheet(local_path, sheet_name)
 }
 \arguments{
 \item{local_path}{The path to a downloaded zip file.}
+
+\item{sheet_name}{Name of the sheet to extract from the Excel file contained
+in the zip.}
 }
 \value{
 A tibble of data.

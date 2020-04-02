@@ -14,7 +14,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-library(tidyverse)
+library(dplyr)
+library(magrittr)
 ```
 
 ipedals is designed to simplify access to [IPEDS][], the Integrated
