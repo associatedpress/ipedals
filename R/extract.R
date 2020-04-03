@@ -25,7 +25,7 @@ extract_metadata_sheet <- function(local_path, sheet_name) {
   Name = lazyeval::as_name("Name")
   xlsx_filenames <- utils::unzip(local_path, list = TRUE) %>%
     tibble::as_tibble() %>%
-    dplyr::filter(stringr::str_detect(Name, "\\.xlsx$"))
+    dplyr::filter(stringr::str_detect(Name, "\\.xlsx?$"))
   xlsx_filename <- xlsx_filenames[1,]$Name
   local_dir <- dirname(local_path)
   utils::unzip(local_path, xlsx_filename, exdir = local_dir)
