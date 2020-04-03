@@ -24,6 +24,7 @@ Imports:
     readxl
 Suggests:
     testthat,
+    httptest,
     knitr,
     rmarkdown
 RoxygenNote: 7.1.0
