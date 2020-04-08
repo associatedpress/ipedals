@@ -11,7 +11,9 @@ extract_csv <- function(local_path, column_types) {
     dplyr::filter(stringr::str_detect(Name, "\\.csv$"))
   csv_filename <- csv_filenames[1,]$Name
   csv_conn <- unz(local_path, csv_filename)
-  readr::read_csv(csv_conn, col_types = column_types)
+  parsed <- suppressWarnings(
+    readr::read_csv(csv_conn, col_types = column_types)) %>%
+    resolve_problems(csv_filename)
 }
 
 #' Load the column type/title metadata from an IPEDS zip file.

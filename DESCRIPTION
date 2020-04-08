@@ -10,7 +10,7 @@ Description: Simplifies interactions with data from the Integrated
     Postsecondary Education Data System, the U.S. Department of Education's
     annual data collection from colleges and universities that receive federal
     financial aid.
-License: MIT + file LICENSE
+License: GPL (>= 2) | file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
